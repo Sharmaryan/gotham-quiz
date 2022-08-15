@@ -5,8 +5,9 @@
 }
 
 :root {
-  --primary-color: rgb(3, 208, 235);
-  --secondary-color: rgb(235, 226, 226);
+  --primary-color: rgb(9, 177, 199);
+  --secondary-color: white;
+  --shadow-color: rgba(0, 0, 0, 0.2);
   --primary-font: "Montserrat", sans-serif;
   --secondary-font: "Yanone Kaffeesatz", sans-serif;
 }

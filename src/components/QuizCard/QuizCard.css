@@ -1,0 +1,36 @@
+.cards{
+ display: flex;
+ gap: 2rem;
+ padding: 1rem;
+ justify-content: center;
+}
+
+.card{
+    text-transform: capitalize;
+    box-shadow: 2px 2px 2px 1px var(--shadow-color);
+    text-align: center;
+}
+
+.card__image{
+    height: 20rem;
+    width: 15rem;
+}
+
+.card__title{
+    font-family: var(--secondary-font);
+    font-weight: bold;
+    padding: 4px 8px;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.card__btn{
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border: none;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    width: 80%;
+    margin: 8px 0;
+    padding: 3px 2px;
+}

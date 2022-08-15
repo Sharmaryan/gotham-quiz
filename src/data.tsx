@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 type Options = {
     text: string,
     isRight: boolean
@@ -11,12 +13,14 @@ type Question = {
 type Quiz = {
     quizName: string,
     quizImage:string,
+    id:string,
     questions: Question[]
 }
 
 const quizOne: Quiz = {
     quizName: 'marvel',
     quizImage:'https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3BpZGVybWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80',
+    id:uuid(),
     questions: [
         {
             question: 'Thor’s hammer Mjolnir is made of metal from the heart of a dying what?',
@@ -129,6 +133,7 @@ const quizOne: Quiz = {
 const quizTwo: Quiz = {
     quizName: 'dc',
     quizImage:'https://cdn.britannica.com/61/177761-050-F38C22B1/Christopher-Reeve-Superman-Richard-Donner.jpg',
+    id: uuid(),
     questions: [
         {
             question: "What is Superman's original name, the one he was born with?",
