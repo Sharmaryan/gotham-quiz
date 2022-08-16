@@ -1,0 +1,30 @@
+.rules {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.rules__heading {
+  color: var(--primary-color);
+  font-family: var(--primary-font);
+  font-size: 2.5rem;
+}
+
+.rules__descriptons {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-family: var(--secondary-font);
+  font-weight: bold;
+}
+.rules__btn{
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    padding: 4px 9px;
+    width: 5rem;
+    margin-top: 2rem;
+}
