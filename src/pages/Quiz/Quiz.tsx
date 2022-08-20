@@ -12,6 +12,7 @@ export const Quiz = () => {
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [isAnswerFalse, setIsAnswerFalse] = useState(false);
   const [wrongAnswerId, setWrongAnswerId] = useState<any>('');
+  const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
 
   const quiz = [quizOne, quizTwo].filter(item => item.id === quizId)?.[0];
   const rightAnswerId = quiz?.questions?.[nextQuestion].options.filter(item => item.isRight === true)?.[0].id;
@@ -27,6 +28,7 @@ export const Quiz = () => {
     else {
       setNextQuestion(prev => prev + 1);
       setIsAnswerCorrect(false);
+      setIsOptionSelected(false)
     }
   }
 
@@ -43,6 +45,7 @@ export const Quiz = () => {
       setIsAnswerFalse(true);
       setIsAnswerCorrect(true);
     }
+    setIsOptionSelected(true);
   }
 
   return (
@@ -58,7 +61,7 @@ export const Quiz = () => {
 
       <div className="quiz__actions">
         <button className="quiz__quit " onClick={quitHandler}>quit</button>
-        <button className="quiz__next" onClick={() => handleNext(quiz)}>Next</button>
+        {!isOptionSelected ? <button className="quiz__disable">Next</button> : <button className="quiz__next" onClick={() => handleNext(quiz)}>Next</button>}
       </div>
 
     </div>

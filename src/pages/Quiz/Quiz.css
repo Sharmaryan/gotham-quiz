@@ -42,7 +42,7 @@
     justify-content: center;
 }
 
-.quiz__quit, .quiz__next{
+.quiz__quit, .quiz__next, .quiz__disable{
     background-color: var(--primary-color);
     color: var(--secondary-color);
     padding: 4px 9px;
@@ -50,6 +50,10 @@
     font-size: 1.4rem;
     border: none;
     width: 8rem;
+}
+
+.quiz__disable{
+    background-color: gray;
 }
 
 .green-background{
