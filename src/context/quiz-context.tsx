@@ -1,0 +1,31 @@
+import { useState, useContext, createContext } from "react";
+
+type quizId = {
+    currentQuizId: string,
+    setCurrentQuizId: React.Dispatch<React.SetStateAction<string>>,
+    quiz: any[],
+    setQuiz: any, 
+    isAnswerCorrect: boolean,
+    setIsAnswerCorrect : any
+}
+
+const QuizContext = createContext({} as quizId);
+
+type childProps = {
+    children: React.ReactNode
+}
+
+const QuizProvider = (props: childProps) => {
+
+
+    const [currentQuizId, setCurrentQuizId] = useState('');
+    const [quiz, setQuiz] = useState<any[]>([]);
+    const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
+    return <QuizContext.Provider value={{ currentQuizId, setCurrentQuizId, quiz, setQuiz, isAnswerCorrect, setIsAnswerCorrect }} >{props.children}</QuizContext.Provider>
+
+}
+
+const useQuiz = () => useContext(QuizContext);
+
+export { useQuiz, QuizProvider }
+
