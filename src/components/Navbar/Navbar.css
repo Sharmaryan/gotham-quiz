@@ -1,0 +1,17 @@
+.navbar{
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+    display: flex;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    box-shadow: 2px 2px 2px 1px var(--shadow-color);
+}
+.navbar__title{
+    margin-left: 1rem;
+}
+.navbar_theme{
+    margin-left: auto;
+    margin-right: 1rem;
+}

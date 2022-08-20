@@ -1,7 +1,9 @@
-import React from 'react'
-
+import './Home.css';
+import { QuizCard } from '../../components';
 export const Home = () => {
   return (
-    <div>Home</div>
+    <div className='home'>
+      <QuizCard />
+    </div>
   )
 }
