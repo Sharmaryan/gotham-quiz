@@ -5,11 +5,12 @@ import { useQuiz } from "../../context/quiz-context";
 
 export const QuizCard = () => {
     const navigate = useNavigate();
-    const { setCurrentQuizId } = useQuiz();
+    const { setCurrentQuizId, setQuestionAnswer } = useQuiz();
 
     const playQuizHandler = (id: string) => {
         navigate('/rules');
         setCurrentQuizId(id);
+        setQuestionAnswer([]);
     }
 
     return (

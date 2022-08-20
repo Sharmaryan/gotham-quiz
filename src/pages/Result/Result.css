@@ -1,0 +1,34 @@
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.result__score{
+    color: var(--primary-color);
+    text-transform: uppercase;
+    margin: 1rem;
+}
+
+.result__questions{
+    margin: 1rem;
+    box-shadow: 2px 2px 2px 1px var(--shadow-color);
+    padding: 1rem;
+}
+
+.result__answer{
+    font-size: 1.3rem;
+    margin: 5px;
+    text-transform: capitalize;
+}
+
+.result__exit{
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    width: 5rem;
+    padding: 4px 1rem;
+    cursor: pointer;
+}

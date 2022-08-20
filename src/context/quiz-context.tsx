@@ -3,10 +3,10 @@ import { useState, useContext, createContext } from "react";
 type quizId = {
     currentQuizId: string,
     setCurrentQuizId: React.Dispatch<React.SetStateAction<string>>,
-    quiz: any[],
-    setQuiz: any,
     score: number,
-    setScore: any
+    setScore: any,
+    questionAnswer: [],
+    setQuestionAnswer: any
 }
 
 const QuizContext = createContext({} as quizId);
@@ -19,9 +19,10 @@ const QuizProvider = (props: childProps) => {
 
 
     const [currentQuizId, setCurrentQuizId] = useState('');
-    const [quiz, setQuiz] = useState<any[]>([]);
     const [score, setScore] = useState<number>(0);
-    return <QuizContext.Provider value={{ currentQuizId, setCurrentQuizId, quiz, setQuiz, score, setScore }} >{props.children}</QuizContext.Provider>
+    const [questionAnswer, setQuestionAnswer] = useState<any>([]);
+
+    return <QuizContext.Provider value={{ currentQuizId, setCurrentQuizId, score, setScore, questionAnswer, setQuestionAnswer }} >{props.children}</QuizContext.Provider>
 
 }
 

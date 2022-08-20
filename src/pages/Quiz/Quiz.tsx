@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import './Quiz.css';
 import { quizOne, quizTwo } from '../../data';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useQuiz } from '../../context/quiz-context';
 export const Quiz = () => {
   const { quizId } = useParams();
   const navigate = useNavigate();
-  const { setQuiz, score, setScore } = useQuiz();
+  const { score, setScore, questionAnswer, setQuestionAnswer } = useQuiz();
 
   const [nextQuestion, setNextQuestion] = useState(0);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
@@ -19,9 +19,7 @@ export const Quiz = () => {
   const quiz = [quizOne, quizTwo].filter(item => item.id === quizId)?.[0];
   const rightAnswerId = quiz?.questions?.[nextQuestion].options.filter(item => item.isRight === true)?.[0].id;
 
-  useEffect(() => {
-    setQuiz(quiz.questions)
-  }, [setQuiz, quiz]);
+
 
   const handleNext = (quiz: any) => {
     if (nextQuestion + 1 === quiz.questions.length) {
@@ -39,7 +37,7 @@ export const Quiz = () => {
     navigate('/', { replace: true })
   }
 
-  const buttonHandler = (id: any) => {
+  const buttonHandler = (id: any, selectedAnswer: string, question: string) => {
     if (id === rightAnswerId) {
       setIsAnswerCorrect(true)
       setScore((prev: number) => prev + 1)
@@ -51,6 +49,7 @@ export const Quiz = () => {
     }
     setIsOptionSelected(true);
     setDisableOptions(true);
+    setQuestionAnswer([...questionAnswer, {selectedAnswer, question }])
   }
 
   return (
@@ -61,7 +60,7 @@ export const Quiz = () => {
 
       <div className="quiz__buttons">
         {quiz.questions[nextQuestion].options.map(item => {
-          return <button key={item.id} className={`quiz__button ${isAnswerCorrect && (item.id === rightAnswerId && 'green-background')} ${isAnswerFalse && (item.id === wrongAnswerId && 'red-background')} `} disabled={disableOptions} onClick={() => buttonHandler(item.id)}>{item.text}</button>
+          return <button key={item.id} className={`quiz__button ${isAnswerCorrect && (item.id === rightAnswerId && 'green-background')} ${isAnswerFalse && (item.id === wrongAnswerId && 'red-background')} `} disabled={disableOptions} onClick={() => buttonHandler(item.id, item.text, quiz.questions[nextQuestion].question)}>{item.text}</button>
         })}
       </div>
 
