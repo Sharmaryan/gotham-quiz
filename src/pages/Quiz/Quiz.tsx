@@ -6,7 +6,7 @@ import { useQuiz } from '../../context/quiz-context';
 export const Quiz = () => {
   const { quizId } = useParams();
   const navigate = useNavigate();
-  const { setQuiz } = useQuiz();
+  const { setQuiz, score, setScore } = useQuiz();
 
   const [nextQuestion, setNextQuestion] = useState(0);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
@@ -14,6 +14,7 @@ export const Quiz = () => {
   const [wrongAnswerId, setWrongAnswerId] = useState<any>('');
   const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
   const [disableOptions, setDisableOptions] = useState<boolean>(false);
+
 
   const quiz = [quizOne, quizTwo].filter(item => item.id === quizId)?.[0];
   const rightAnswerId = quiz?.questions?.[nextQuestion].options.filter(item => item.isRight === true)?.[0].id;
@@ -41,6 +42,7 @@ export const Quiz = () => {
   const buttonHandler = (id: any) => {
     if (id === rightAnswerId) {
       setIsAnswerCorrect(true)
+      setScore((prev: number) => prev + 1)
     }
     else {
       setWrongAnswerId(id);
@@ -53,6 +55,7 @@ export const Quiz = () => {
 
   return (
     <div className='quiz'>
+      <h1 className='quiz__score'>Score : {score}</h1>
       <h2 className='quiz__heading'>quiz name : {quiz.quizName}</h2>
       <h3 className='quiz__questions'>{quiz.questions[nextQuestion].question}</h3>
 

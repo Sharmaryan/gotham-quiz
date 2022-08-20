@@ -56,6 +56,10 @@
     background-color: gray;
 }
 
+.quiz__score{
+    color: var(--primary-color);
+}
+
 .green-background{
     background-color: green;
 }
