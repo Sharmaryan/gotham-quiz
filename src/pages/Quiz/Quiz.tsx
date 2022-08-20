@@ -13,6 +13,7 @@ export const Quiz = () => {
   const [isAnswerFalse, setIsAnswerFalse] = useState(false);
   const [wrongAnswerId, setWrongAnswerId] = useState<any>('');
   const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
+  const [disableOptions, setDisableOptions] = useState<boolean>(false);
 
   const quiz = [quizOne, quizTwo].filter(item => item.id === quizId)?.[0];
   const rightAnswerId = quiz?.questions?.[nextQuestion].options.filter(item => item.isRight === true)?.[0].id;
@@ -28,8 +29,9 @@ export const Quiz = () => {
     else {
       setNextQuestion(prev => prev + 1);
       setIsAnswerCorrect(false);
-      setIsOptionSelected(false)
     }
+    setIsOptionSelected(false);
+    setDisableOptions(false);
   }
 
   const quitHandler = () => {
@@ -46,6 +48,7 @@ export const Quiz = () => {
       setIsAnswerCorrect(true);
     }
     setIsOptionSelected(true);
+    setDisableOptions(true);
   }
 
   return (
@@ -55,7 +58,7 @@ export const Quiz = () => {
 
       <div className="quiz__buttons">
         {quiz.questions[nextQuestion].options.map(item => {
-          return <button key={item.id} className={`quiz__button ${isAnswerCorrect && (item.id === rightAnswerId && 'green-background')} ${isAnswerFalse && (item.id === wrongAnswerId && 'red-background')} `} onClick={() => buttonHandler(item.id)}>{item.text}</button>
+          return <button key={item.id} className={`quiz__button ${isAnswerCorrect && (item.id === rightAnswerId && 'green-background')} ${isAnswerFalse && (item.id === wrongAnswerId && 'red-background')} `} disabled={disableOptions} onClick={() => buttonHandler(item.id)}>{item.text}</button>
         })}
       </div>
 
