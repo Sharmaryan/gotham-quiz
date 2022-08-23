@@ -2,13 +2,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './Quiz.css';
 import { quizOne, quizTwo } from '../../data';
 import { useState } from 'react';
-import { useQuiz } from '../../context/quiz-context';
-import { useTheme } from '../../context';
+import { useTheme, useQuiz } from '../../context';
+import { useTitle } from '../../hooks/useTitle';
 export const Quiz = () => {
+
   const { quizId } = useParams();
   const navigate = useNavigate();
   const { score, setScore, questionAnswer, setQuestionAnswer } = useQuiz();
   const {theme} =  useTheme();
+  useTitle('Quiz | Gotham Quiz');
+
   const [nextQuestion, setNextQuestion] = useState(0);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [isAnswerFalse, setIsAnswerFalse] = useState(false);

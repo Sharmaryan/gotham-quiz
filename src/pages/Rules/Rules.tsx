@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useTheme } from '../../context';
-import { useQuiz } from '../../context/quiz-context';
+import { useTheme, useQuiz } from '../../context';
+import { useTitle } from '../../hooks/useTitle';
 import './Rules.css';
+
 export const Rules = () => {
   const { currentQuizId } = useQuiz();
-  const {theme} = useTheme();
-
+  const { theme } = useTheme();
+  useTitle('Rules | Gotham Quiz');
   return (
-    <div className= {`rules ${theme}`}>
+    <div className={`rules ${theme}`}>
       <h1 className="rules__heading">Rules</h1>
       <ol className="rules__descriptons">
         <li className="rules__description">Do not cheat.</li>
