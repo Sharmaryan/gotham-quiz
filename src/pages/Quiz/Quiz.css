@@ -7,7 +7,6 @@
 }
 
 .quiz__heading{
-    color: var(--primary-color);
     text-transform: capitalize;
     margin: 1rem 0;
 }
@@ -30,7 +29,6 @@
     font-weight: bold;
     font-family: var(--primary-font);
     font-size: 2rem;
-    color: var(--primary-color);
     width: 100%;
     cursor: pointer;
 }
@@ -43,7 +41,7 @@
 }
 
 .quiz__quit, .quiz__next, .quiz__disable{
-    background-color: var(--primary-color);
+    background-color: var(--button-color);
     color: var(--secondary-color);
     padding: 4px 9px;
     text-transform: capitalize;
@@ -53,12 +51,9 @@
 }
 
 .quiz__disable{
-    background-color: gray;
+    background-color: rgba(62, 131, 127, 0.61);
 }
 
-.quiz__score{
-    color: var(--primary-color);
-}
 
 .green-background{
     background-color: green;

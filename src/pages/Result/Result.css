@@ -5,14 +5,13 @@
 }
 
 .result__score{
-    color: var(--primary-color);
     text-transform: uppercase;
     margin: 1rem;
 }
 
 .result__questions{
     margin: 1rem;
-    box-shadow: 2px 2px 2px 1px var(--shadow-color);
+    box-shadow: 0 0 2px 1px var(--shadow-color);
     padding: 1rem;
 }
 
@@ -24,7 +23,7 @@
 
 .result__exit{
     border: none;
-    background-color: var(--primary-color);
+    background-color: var(--button-color);
     color: var(--secondary-color);
     font-size: 1.4rem;
     text-transform: uppercase;

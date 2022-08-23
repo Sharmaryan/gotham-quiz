@@ -3,11 +3,12 @@ import './Quiz.css';
 import { quizOne, quizTwo } from '../../data';
 import { useState } from 'react';
 import { useQuiz } from '../../context/quiz-context';
+import { useTheme } from '../../context';
 export const Quiz = () => {
   const { quizId } = useParams();
   const navigate = useNavigate();
   const { score, setScore, questionAnswer, setQuestionAnswer } = useQuiz();
-
+  const {theme} =  useTheme();
   const [nextQuestion, setNextQuestion] = useState(0);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [isAnswerFalse, setIsAnswerFalse] = useState(false);
@@ -53,14 +54,14 @@ export const Quiz = () => {
   }
 
   return (
-    <div className='quiz'>
+    <div className={`quiz ${theme}`}>
       <h1 className='quiz__score'>Score : {score}</h1>
       <h2 className='quiz__heading'>quiz name : {quiz.quizName}</h2>
       <h3 className='quiz__questions'>{quiz.questions[nextQuestion].question}</h3>
 
       <div className="quiz__buttons">
         {quiz.questions[nextQuestion].options.map(item => {
-          return <button key={item.id} className={`quiz__button ${isAnswerCorrect && (item.id === rightAnswerId && 'green-background')} ${isAnswerFalse && (item.id === wrongAnswerId && 'red-background')} `} disabled={disableOptions} onClick={() => buttonHandler(item.id, item.text, quiz.questions[nextQuestion].question)}>{item.text}</button>
+          return <button key={item.id} className={`quiz__button ${isAnswerCorrect && (item.id === rightAnswerId && 'green-background')} ${isAnswerFalse && (item.id === wrongAnswerId && 'red-background')} ${theme}`} disabled={disableOptions} onClick={() => buttonHandler(item.id, item.text, quiz.questions[nextQuestion].question) }>{item.text}</button>
         })}
       </div>
 
