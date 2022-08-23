@@ -1,7 +1,7 @@
 import { useState, useContext, createContext } from "react";
 
 type themeProps = {
-    theme : string,
+    theme: string,
     setTheme: React.Dispatch<React.SetStateAction<string>>
 }
 
@@ -13,8 +13,7 @@ type childProps = {
 
 const ThemeProvider = (props: childProps) => {
 
-    const [theme, setTheme] = useState<string>('dark');
-
+    const [theme, setTheme] = useState<any>(localStorage.getItem('theme'));
     return <ThemeContext.Provider value={{ theme, setTheme }} >{props.children}</ThemeContext.Provider>
 
 }

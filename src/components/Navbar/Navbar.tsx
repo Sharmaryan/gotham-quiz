@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from '../../context';
 import './Navbar.css';
 
 export const Navbar = () => {
     const [themeIcon, setThemeIcon] = useState<boolean>(false);
-    const {theme, setTheme} = useTheme();
+    const { theme, setTheme } = useTheme();
 
     const themeIconHandler = () => {
         setThemeIcon((prev: boolean) => !prev);
         setTheme(theme === 'light' ? 'dark' : 'light');
     }
+
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+    }, [theme])
 
     return (
         <div className={`navbar ${theme}`}>
